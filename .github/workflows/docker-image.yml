@@ -24,9 +24,15 @@ jobs:
       run : docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" qualsafedemo.jfrog.io
       #run : echo $DOCKER_USERNAME
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
-    - name: Publish dockerimage to docker hub
-      run: docker push ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
+      #run: docker build myapp . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
+      run: docker build myapp . --file Dockerfile
+    - name: Docker tag myapp qualsafedemo.jfrog.io/qualsafedemo-docker-local/myapp:${{steps.vars.outputs.tag}} 
+      run: docker tag myapp 
+    - name: Publish dockerimage to jfrog docker hub
+      run: docker push qualsafedemo.jfrog.io/qualsafedemo-docker-local/myapp:${{steps.vars.outputs.tag}}
+      
+      
+      #run: docker push ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
     
     #- name: Build Docker image with latest tag
      # run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:latest
