@@ -25,7 +25,7 @@ jobs:
       #run : echo $DOCKER_USERNAME
     - name: Build the Docker image
       #run: docker build myapp . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
-      run: docker build myapp . --file Dockerfile
+      run: docker build myapp .
     - name: Docker tag myapp qualsafedemo.jfrog.io/qualsafedemo-docker-local/myapp:${{steps.vars.outputs.tag}} 
       run: docker tag myapp 
     - name: Publish dockerimage to jfrog docker hub
