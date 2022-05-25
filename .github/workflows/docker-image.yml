@@ -21,7 +21,8 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.dockerhub_username }}
         DOCKER_PASSWORD: ${{ secrets.dockerhub_password }}
-      run : docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" qualsafedemo.jfrog.io
+      #run : docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" qualsafedemo.jfrog.io
+      run : echo $DOCKER_USERNAME
     #- name: Build the Docker image
      # run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
     #- name: Publish dockerimage to docker hub
