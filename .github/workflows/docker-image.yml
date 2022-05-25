@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag qualsafedemo:$(date +%s)
     - name: Docker Tag
-    - run: docker --tag qualsafedemo:$(date +%s) qualsafedemo.jfrog.io/qualsafedemo:$(date +%s)
-    - run: docker push qualsafedemo.jfrog.io/qualsafedemo:$(date +%s)
+      run: docker --tag qualsafedemo:$(date +%s) qualsafedemo.jfrog.io/qualsafedemo:$(date +%s)
+      #run: docker push qualsafedemo.jfrog.io/qualsafedemo:$(date +%s)
     
     
