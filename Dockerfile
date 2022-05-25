@@ -1,4 +1,5 @@
-FROM qualsafedemo.jfrog.io/qualsafedemo-docker/openjdk:8-jdk-alpine 
+# FROM qualsafedemo.jfrog.io/qualsafedemo-docker/openjdk:8-jdk-alpine 
+FROM openjdk:8-jdk-alpine
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 ARG DEPENDENCY=Ttarget/dependency
